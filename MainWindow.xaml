@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Scleam_Alexandra_Lab2"
+        xmlns:CustomCommands="clr-namespace:Scleam_Alexandra_Lab2.CustomCommands"
         mc:Ignorable="d"
         Title="Pizzeria Colosseo" Height="450" Width="800" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Loaded="frmMain_Loaded">
-    <Grid Margin="0,0,10,18">
+    <Grid Margin="0,0,10,18" MenuItem.Click="PizzaItemsShow_Click">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="57*"/>
             <ColumnDefinition Width="743*"/>
@@ -32,9 +33,9 @@
                         <ComboBox x:Name="cmbType" Width="120" Canvas.Left="363" Canvas.Top="24"/>
                         <Label x:Name="lblTotal" Content="TOTAL" FontWeight="Bold" Height="26" Width="55" Canvas.Left="468" Canvas.Top="151"/>
                         <TextBox x:Name="txtTotal" Text="0" TextWrapping="Wrap" Width="86" HorizontalContentAlignment="Right" IsReadOnly="True" Canvas.Left="528" Canvas.Top="151" Height="22"/>
-                        <Button x:Name="btnAddToSale" Content="Add To Sale" RenderTransformOrigin="0.66,2.13" Canvas.Left="647" Canvas.Top="77" FontWeight="Normal" Height="26" Width="86"/>
-                        <Button x:Name="btnRemoveItem" Content="Remove Item" Canvas.Left="647" Canvas.Top="108" Width="86" Height="27" FontWeight="Normal"/>
-                        <Button x:Name="btnCheckOut" Content="Check Out" Canvas.Left="647" Canvas.Top="147" Width="86" Height="34"/>
+                        <Button x:Name="btnAddToSale" Content="Add To Sale" RenderTransformOrigin="0.66,2.13" Canvas.Left="647" Canvas.Top="77" FontWeight="Normal" Height="26" Width="86" Click="btnAddToSale_Click"/>
+                        <Button x:Name="btnRemoveItem" Content="Remove Item" Canvas.Left="647" Canvas.Top="108" Width="86" Height="27" FontWeight="Normal" Click="btnRemoveItem_Click"/>
+                        <Button x:Name="btnCheckOut" Content="Check Out" Canvas.Left="647" Canvas.Top="147" Width="86" Height="34" Click="btnCheckOut_Click"/>
                         <Label x:Name="lblPrice" Content="Price" FontWeight="Normal" Canvas.Left="535" Canvas.Top="24"/>
                         <TextBox x:Name="txtPrice" Text="0" TextWrapping="Wrap" Width="97" FontWeight="Normal" IsReadOnly="True" HorizontalContentAlignment="Right" Canvas.Left="585" Canvas.Top="28"/>
                         <ListBox x:Name="lstSale" Height="62" Width="604" Canvas.Top="77" Canvas.Left="10"/>
@@ -60,7 +61,8 @@ Width="90" Grid.ColumnSpan="2" Margin="28,30,0,0">
                     <MenuItem x:Name="canPizzaMenuItem" Header="Canibale Pizza"
                               Click="canPizzaMenuItem_Click" IsCheckable="True"/>
                 </MenuItem>
-                <MenuItem Header="Stop" x:Name="mnuStop" Click="stopMenuItem_Click"/>
+                <MenuItem Header="Stop" x:Name="mnuStop" Click="stopMenuItem_Click" InputGestureText="Ctrl+S" Command="CustomCommands:StopCommand.Launch"/>
+                <MenuItem Header="Inventory" Command="ApplicationCommands.Print"/>
             </MenuItem>
         </Menu>
     </Grid>
